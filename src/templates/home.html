@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {{ title }}
+    {{ user }}
+    {{ request.user }}
+    {{ request.path }}
+    {{ user.is_authenticated }}
+    {% if user.is_authenticated %}
+     <h1>U5R ONLY DATA</h1>
+     {% for a in my_list %}
+        <p>{{a}}</p>
+     {% endfor %}
+    {% endif %}
+{% endblock content %}
+    
