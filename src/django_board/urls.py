@@ -31,6 +31,7 @@ urlpatterns = [
     re_path(r'^about/$', about_page),
     #path('board/', board_post_detail_page),
     path('board/<int:post_id>/', board_post_detail_page),
+    re_path(r'^blog/(?P<post_id>\d+/$', board_post_detail_page)
     path('example/', example_page),
     path('contact/', contact_page),
     path('mscbr-admin/', admin.site.urls),
