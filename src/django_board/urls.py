@@ -22,11 +22,16 @@ from .views import (
     contact_page,
     example_page,
 )
+from board.views import (
+    board_post_detail_page
+)
 
 urlpatterns = [
     path('', home_page),
     re_path(r'^about/$', about_page),
-     path('example/', example_page),
+    #path('board/', board_post_detail_page),
+    path('board/<int:post_id>/', board_post_detail_page),
+    path('example/', example_page),
     path('contact/', contact_page),
     path('mscbr-admin/', admin.site.urls),
 ]
