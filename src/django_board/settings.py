@@ -38,7 +38,7 @@ INSTALLED_APPS = [ #components
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'board',
+    'board', #pluggable
 ]
 
 MIDDLEWARE = [
