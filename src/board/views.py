@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 
 # Create your views here.
+from .forms import BoardPostForm
 from .models import BoardPost
 
 
@@ -32,8 +33,13 @@ def board_post_update_view(request, slug):
 
 def board_post_create_view(request):
     #create objects
-    template_name = 'board/create.html'
-    context = {'form': None}
+    form = BoardPostForm(request.POST or None)
+    if form.is_valid():
+        print(form.cleaned_data)
+        obj = BoardPost.objects.create(**form.cleaned_data)
+        form = BoardPostForm()
+    template_name = 'board/form.html'
+    context = {'form': form}
     return render(request, template_name, context)
 
 def board_post_delete_view(request, slug):
