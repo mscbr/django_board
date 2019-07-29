@@ -13,31 +13,31 @@ def board_post_list_view(request):
     #search example
     #qs = BoardPost.objects.filter(title__icontains='title')
     qs = BoardPost.objects.all() #queryset - list of python obj
-    template_name = 'board_post_list.html'
+    template_name = 'board/list.html'
     context = {'object_list': qs}
     return render(request, template_name, context)
 
 def board_post_detail_view(request, slug):
     #1 obj -> detail view
     obj = get_object_or_404(BoardPost, slug=slug)
-    template_name = 'board_post_detail.html'
+    template_name = 'board/detail.html'
     context = {'object': obj}
     return render(request, template_name, context)
 
 def board_post_update_view(request, slug): 
     obj = get_object_or_404(BoardPost, slug=slug)
-    template_name = 'board_post_update.html'
+    template_name = 'board/update.html'
     context = {'object': obj, 'form': None}
     return render(request, template_name, context)
 
 def board_post_create_view(request):
     #create objects
-    template_name = 'board_post_create.html'
+    template_name = 'board/create.html'
     context = {'form': None}
     return render(request, template_name, context)
 
 def board_post_delete_view(request, slug):
     obj = get_object_or_404(BoardPost, slug=slug)
-    template_name = 'board_post_delete.html'
+    template_name = 'board/delete.html'
     context = {'object': obj}
     return render(request, template_name, context)
