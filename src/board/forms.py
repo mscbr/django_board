@@ -14,8 +14,6 @@ class BoardPostModelForm(forms.ModelForm):
     def clean_title(self, *args, **kwargs):
         title = self.cleaned_data.get('title')
         instance = self.instance
-        #print(instance)
-        #print(dir(self))
         qs = BoardPost.objects.filter(title__iexact=title)
         if instance is not None:
             qs = qs.exclude(pk=instance.pk) #-> id=instance.id

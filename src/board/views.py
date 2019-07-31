@@ -43,6 +43,7 @@ def board_post_create_view(request):
         obj.user = request.user
         obj.save()
         form = BoardPostModelForm()
+        return redirect('/board')
     template_name = 'board/form.html'
     context = {'form': form}
     return render(request, template_name, context)

@@ -3,12 +3,12 @@ from django.shortcuts import render
 from django.template.loader import get_template
 
 from .forms import ContactForm
+from board.models import BoardPost
 
 def home_page(request):
         my_title = "%$$#"
-        context = {"title": "my_title"}
-        if request.user.is_authenticated:
-                context = {"title": my_title, 'my_list': [1,2,23,4,5]}
+        qs = BoardPost.objects.all()[:5]
+        context = {"title": "wilkomen to django_board", 'board_list': qs}
         return render(request, "home.html", context)
 
 
