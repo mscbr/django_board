@@ -4,8 +4,8 @@
     <h1>{{ title }}</h1>
     {% if user.is_authenticated %}
      {% for a in board_list %}
-        {% include 'board/list-inline.html' with blog_post=a %}
+        {% include 'board/list-inline.html' with blog_post=a truncate=True detail=False %}
      {% endfor %}
     {% endif %}
 {% endblock content %}
-    
+     

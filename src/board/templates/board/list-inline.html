@@ -1,12 +1,22 @@
 
 
 <div class="col-12 col-md-10 mb-3 mx-auto">
-    <a href='{{ blog_post.get_absolute_url }}' style="color: black;">
-        <div class="card">
-            <div class="card-body">
+    <div class="card">
+        <div class="card-body">
+            {% if not detail%}
+            <a href='{{ blog_post.get_absolute_url }}' style="color: black;">
                 <h5 class="card-title">{{ blog_post.title }}</h5>
-                <p class="card-text">{{ blog_post.content }}</p>
-            </div>
+            </a>
+            {% else %}
+                <h5 class="card-title">{{ blog_post.title }}</h5>
+            {% endif %}
+            <p class="card-text"></p>
+                {% if truncate %}
+                    {{ blog_post.content|linebreaks|truncatewords:30 }}
+                {% else %}
+                    {{ blog_post.content|linebreaks }}
+                {% endif %}    
+            </p>
         </div>
-    </a>
+    </div>
 </div>
