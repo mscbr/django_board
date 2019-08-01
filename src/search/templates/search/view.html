@@ -9,6 +9,11 @@
                 <p class="lead">You searched for {{ query }}</p>
             {% endif %}
                 
+            
+            {% for board_item in board_list  %}
+                {% include 'board/list-inline.html' with blog_post=board_item truncate=True detail=False %}
+            {% endfor %}
+                
         </div>
 
     </div>
