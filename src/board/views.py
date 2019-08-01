@@ -11,7 +11,10 @@ def board_post_list_view(request):
     #list out obj / search 
     #search example
     #qs = BoardPost.objects.filter(title__icontains='title')
-    qs = BoardPost.objects.all() #queryset - list of python obj
+    qs = BoardPost.objects.all().published() #queryset - list of python obj
+    if request.user.is_authenticated:
+        my_qs = BoardPost.objects.filter(user=request.user)
+        qs = (qs | my_qs).distinct()
     template_name = 'board/list.html'
     context = {'object_list': qs}
     return render(request, template_name, context)

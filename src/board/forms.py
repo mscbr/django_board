@@ -9,7 +9,7 @@ class BoardPostForm(forms.Form):
 class BoardPostModelForm(forms.ModelForm):
     class Meta:
         model = BoardPost
-        fields = ['title', 'slug', 'content']
+        fields = ['title', 'slug', 'content', 'publish_date']
 
     def clean_title(self, *args, **kwargs):
         title = self.cleaned_data.get('title')
