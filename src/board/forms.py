@@ -9,7 +9,7 @@ class BoardPostForm(forms.Form):
 class BoardPostModelForm(forms.ModelForm):
     class Meta:
         model = BoardPost
-        fields = ['title', 'slug', 'content', 'publish_date']
+        fields = ['title', 'image', 'slug', 'content', 'publish_date']
 
     def clean_title(self, *args, **kwargs):
         title = self.cleaned_data.get('title')
@@ -19,4 +19,4 @@ class BoardPostModelForm(forms.ModelForm):
             qs = qs.exclude(pk=instance.pk) #-> id=instance.id
         if qs.exists():
             raise forms.ValidationError('This title has already been used')
-        return title
+        return title 

@@ -26,6 +26,7 @@ from .views import (
 from board.views import (
     board_post_create_view,
 )
+from search.views import search_view
 
 urlpatterns = [
     path('', home_page),
@@ -37,6 +38,8 @@ urlpatterns = [
     path('example/', example_page),
     path('contact/', contact_page),
     path('admin/', admin.site.urls),
+
+    path('search/', search_view)
 ]
 
 if settings.DEBUG:

@@ -29,7 +29,7 @@ def board_post_detail_view(request, slug):
 @staff_member_required() 
 def board_post_update_view(request, slug): 
     obj = get_object_or_404(BoardPost, slug=slug)
-    form = BoardPostModelForm(request.POST or None, instance=obj)
+    form = BoardPostModelForm(request.POST or None, request.FILES or None, instance=obj)
     if form.is_valid():
         form.save()
     template_name = 'board/form.html'
@@ -40,7 +40,7 @@ def board_post_update_view(request, slug):
 @staff_member_required() 
 def board_post_create_view(request):
     #create objects
-    form = BoardPostModelForm(request.POST or None)
+    form = BoardPostModelForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         obj = form.save(commit=False)
         obj.user = request.user

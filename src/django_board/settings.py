@@ -41,6 +41,7 @@ INSTALLED_APPS = [ #components
     'django.contrib.staticfiles',
 
     'board', #pluggable
+    'search',
 ]
 
 MIDDLEWARE = [
